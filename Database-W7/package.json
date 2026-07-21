@@ -6,7 +6,6 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-<<<<<<< HEAD
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
@@ -20,31 +19,8 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "prisma:generate": "prisma generate"
-=======
-  "build": "nest build",
-  "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-  "start": "nest start",
-  "start:dev": "nest start --watch",
-  "start:debug": "nest start --debug --watch",
-  "start:prod": "node dist/src/main.js",
-  "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
-  "test": "jest",
-  "test:watch": "jest --watch",
-  "test:cov": "jest --coverage",
-  "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-  "test:e2e": "jest --config ./test/jest-e2e.json",
-  "postinstall": "prisma generate"
->>>>>>> 6ea0951e8139a36fb1c3fe6265004efa425a3020
   },
   "dependencies": {
-    "@nestjs/common": "^11.0.1",
-    "@nestjs/core": "^11.0.1",
-    "@nestjs/platform-express": "^11.0.1",
-<<<<<<< HEAD
-    "@nestjs/serve-static": "^5.0.3",
-=======
-    "@nestjs/serve-static": "^5.0.5",
->>>>>>> 6ea0951e8139a36fb1c3fe6265004efa425a3020
     "@prisma/client": "^6.19.3",
     "prisma": "^6.19.3",
     "reflect-metadata": "^0.2.2",
@@ -73,12 +49,8 @@
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.7.3",
-<<<<<<< HEAD
     "typescript-eslint": "^8.20.0",
     "prisma": "^6.0.0"
-=======
-    "typescript-eslint": "^8.20.0"
->>>>>>> 6ea0951e8139a36fb1c3fe6265004efa425a3020
   },
   "jest": {
     "moduleFileExtensions": [

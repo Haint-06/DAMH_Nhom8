@@ -125,7 +125,6 @@ input, textarea, select {
 
 ul {
     margin-left: 20px;
-<<<<<<< HEAD
 }
 .form-box label {
     display: block;
@@ -225,6 +224,4 @@ ul {
     .search-date input {
         width: 100%;
     }
-=======
->>>>>>> 6ea0951e8139a36fb1c3fe6265004efa425a3020
 }

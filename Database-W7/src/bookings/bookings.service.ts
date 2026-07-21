@@ -1,16 +1,11 @@
-<<<<<<< HEAD
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { BookingStatus } from '@prisma/client';
-=======
-import { Injectable, NotFoundException } from '@nestjs/common';
->>>>>>> 6ea0951e8139a36fb1c3fe6265004efa425a3020
 import { PrismaService } from '../prisma.service';
 
 @Injectable()
 export class BookingsService {
   constructor(private prisma: PrismaService) {}
 
-<<<<<<< HEAD
   async create(data: {
     roomId: string;
     meetingTitle: string;
@@ -57,8 +52,6 @@ export class BookingsService {
     });
   }
 
-=======
->>>>>>> 6ea0951e8139a36fb1c3fe6265004efa425a3020
   findAll(roomId?: string) {
     return this.prisma.booking.findMany({
       where: roomId ? { roomId } : undefined,
@@ -73,7 +66,6 @@ export class BookingsService {
     return booking;
   }
 
-<<<<<<< HEAD
   async update(id: string, data: any) {
     await this.findOne(id);
     const updateData = { ...data };
@@ -91,9 +83,6 @@ export class BookingsService {
   }
 
   history(roomId?: string) {
-=======
-  async history(roomId?: string) {
->>>>>>> 6ea0951e8139a36fb1c3fe6265004efa425a3020
     return this.prisma.booking.findMany({
       where: { roomId, endTime: { lt: new Date() } },
       include: { room: true },
@@ -101,19 +90,11 @@ export class BookingsService {
     });
   }
 
-<<<<<<< HEAD
   upcoming(roomId?: string) {
-=======
-  async upcoming(roomId?: string) {
->>>>>>> 6ea0951e8139a36fb1c3fe6265004efa425a3020
     return this.prisma.booking.findMany({
       where: { roomId, startTime: { gte: new Date() } },
       include: { room: true },
       orderBy: { startTime: 'asc' },
     });
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 6ea0951e8139a36fb1c3fe6265004efa425a3020
