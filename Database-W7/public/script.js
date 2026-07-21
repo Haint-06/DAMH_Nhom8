@@ -1,8 +1,26 @@
+<<<<<<< HEAD
 const API = window.location.origin;
+=======
+const API = "https://damh-nhom8.onrender.com";
+
+function hienThiTrangThai(status) {
+    switch (status) {
+        case "Active":
+            return "Đang sử dụng";
+        case "Maintenance":
+            return "Bảo trì";
+        case "Inactive":
+            return "Trống";
+        default:
+            return status;
+    }
+}
+>>>>>>> 6ea0951e8139a36fb1c3fe6265004efa425a3020
 
 let phongHops = [];
 let idDangSua = null;
 
+<<<<<<< HEAD
 function hienThiTrangThai(status) {
   return {
     Active: "Đang sử dụng",
@@ -11,12 +29,15 @@ function hienThiTrangThai(status) {
   }[status] || status;
 }
 
+=======
+>>>>>>> 6ea0951e8139a36fb1c3fe6265004efa425a3020
 function doiTenField(room) {
   return {
     id: room.id,
     ten: room.roomName,
     soCho: room.capacity,
     thietBi: room.equipment || [],
+<<<<<<< HEAD
     trangThai: room.status,
     bookings: room.bookings || []
   };
@@ -48,10 +69,22 @@ async function loadRooms() {
   } catch (error) {
     alert(error.message);
   }
+=======
+    trangThai: room.status
+  };
+}
+
+async function loadRooms() {
+  const res = await fetch(`${API}/rooms`);
+  const rooms = await res.json();
+  phongHops = rooms.map(doiTenField);
+  hienDanhSachPhong();
+>>>>>>> 6ea0951e8139a36fb1c3fe6265004efa425a3020
 }
 
 function hienFormThem() {
   idDangSua = null;
+<<<<<<< HEAD
   xoaForm();
   document.getElementById("formThem").classList.remove("hidden");
   document.getElementById("chiTietPhong").innerHTML = "Đang thêm phòng họp mới.";
@@ -65,6 +98,15 @@ function huyForm() {
 
 function hienDanhSachPhong() {
   const roomList = document.getElementById("roomList");
+=======
+  document.getElementById("formThem").classList.remove("hidden");
+  document.getElementById("chiTietPhong").innerHTML = "Đang thêm phòng họp mới.";
+  xoaForm();
+}
+
+function hienDanhSachPhong() {
+  let roomList = document.getElementById("roomList");
+>>>>>>> 6ea0951e8139a36fb1c3fe6265004efa425a3020
   roomList.innerHTML = "";
 
   phongHops.forEach((phong, index) => {
@@ -73,16 +115,26 @@ function hienDanhSachPhong() {
         <h3>${phong.ten}</h3>
         <p><b>Số chỗ:</b> ${phong.soCho}</p>
         <p><b>Trạng thái:</b> ${hienThiTrangThai(phong.trangThai)}</p>
+<<<<<<< HEAD
         <p><b>Số lịch:</b> ${phong.bookings.length}</p>
         <button class="btn btn-blue" onclick="xemChiTiet(${index})">Xem chi tiết</button>
         <button class="btn" onclick="suaPhong(${index})">Sửa</button>
         <button class="btn btn-red" onclick="xoaPhong(${index})">Xóa</button>
       </div>`;
+=======
+
+        <button class="btn btn-blue" onclick="xemChiTiet(${index})">Xem chi tiết</button>
+        <button class="btn" onclick="suaPhong(${index})">Sửa</button>
+        <button class="btn btn-red" onclick="xoaPhong(${index})">Xóa</button>
+      </div>
+    `;
+>>>>>>> 6ea0951e8139a36fb1c3fe6265004efa425a3020
   });
 
   capNhatThongKe();
 }
 
+<<<<<<< HEAD
 function layDuLieuPhong() {
   return {
     roomName: document.getElementById("tenPhong").value.trim(),
@@ -178,10 +230,49 @@ function xemChiTiet(index) {
           <p><b>Kết thúc:</b> ${dinhDangNgayGio(b.endTime)}</p>
         </div>`).join("")
     : "<p>Không có lịch sử sử dụng.</p>";
+=======
+async function themPhong() {
+  let phong = {
+    roomName: document.getElementById("tenPhong").value,
+    capacity: Number(document.getElementById("soCho").value),
+    equipment: document.getElementById("thietBi").value.split(",").map(x => x.trim()),
+    status: document.getElementById("trangThai").value
+  };
+
+  if (phong.roomName === "" || phong.capacity === 0) {
+    alert("Vui lòng nhập tên phòng và số chỗ!");
+    return;
+  }
+
+  if (idDangSua === null) {
+    await fetch(`${API}/rooms`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(phong)
+    });
+    alert("Đã thêm phòng họp!");
+  } else {
+    await fetch(`${API}/rooms/${idDangSua}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(phong)
+    });
+    alert("Đã cập nhật phòng họp!");
+    idDangSua = null;
+  }
+
+  xoaForm();
+  loadRooms();
+}
+
+function xemChiTiet(index) {
+  let phong = phongHops[index];
+>>>>>>> 6ea0951e8139a36fb1c3fe6265004efa425a3020
 
   document.getElementById("chiTietPhong").innerHTML = `
     <h3>${phong.ten}</h3>
     <p><b>Số chỗ:</b> ${phong.soCho}</p>
+<<<<<<< HEAD
     <p><b>Thiết bị:</b> ${phong.thietBi.join(", ") || "Không có"}</p>
     <p><b>Trạng thái:</b> ${hienThiTrangThai(phong.trangThai)}</p>
     <h4>Lịch đặt / lịch sử sử dụng</h4>
@@ -190,6 +281,18 @@ function xemChiTiet(index) {
 
 function suaPhong(index) {
   const phong = phongHops[index];
+=======
+    <p><b>Thiết bị:</b></p>
+    <ul>
+      ${phong.thietBi.map(tb => `<li>${tb}</li>`).join("")}
+    </ul>
+    <p><b>Trạng thái:</b> ${phong.trangThai}</p>
+  `;
+}
+
+function suaPhong(index) {
+  let phong = phongHops[index];
+>>>>>>> 6ea0951e8139a36fb1c3fe6265004efa425a3020
   idDangSua = phong.id;
 
   document.getElementById("formThem").classList.remove("hidden");
@@ -198,6 +301,7 @@ function suaPhong(index) {
   document.getElementById("thietBi").value = phong.thietBi.join(", ");
   document.getElementById("trangThai").value = phong.trangThai;
 
+<<<<<<< HEAD
   document.getElementById("tenCuocHop").value = "";
   document.getElementById("nguoiToChuc").value = "";
   document.getElementById("ngaySuDung").value = "";
@@ -221,10 +325,32 @@ async function xoaPhong(index) {
 function xoaForm() {
   ["tenPhong", "soCho", "thietBi", "tenCuocHop", "nguoiToChuc", "ngaySuDung", "gioBatDau", "gioKetThuc"]
     .forEach(id => document.getElementById(id).value = "");
+=======
+  document.getElementById("chiTietPhong").innerHTML = "Đang sửa thông tin phòng họp.";
+}
+
+async function xoaPhong(index) {
+  let xacNhan = confirm("Bạn có chắc muốn xóa phòng họp này không?");
+  if (!xacNhan) return;
+
+  await fetch(`${API}/rooms/${phongHops[index].id}`, {
+    method: "DELETE"
+  });
+
+  document.getElementById("chiTietPhong").innerHTML = "Đã xóa phòng họp.";
+  loadRooms();
+}
+
+function xoaForm() {
+  document.getElementById("tenPhong").value = "";
+  document.getElementById("soCho").value = "";
+  document.getElementById("thietBi").value = "";
+>>>>>>> 6ea0951e8139a36fb1c3fe6265004efa425a3020
   document.getElementById("trangThai").value = "Inactive";
 }
 
 function capNhatThongKe() {
+<<<<<<< HEAD
   document.getElementById("tongPhong").innerText = `${phongHops.length} phòng họp`;
   const soPhongTrong = phongHops.filter(p => p.trangThai === "Inactive").length;
   document.getElementById("phongTrong").innerText = `${soPhongTrong} phòng đang trống`;
@@ -335,3 +461,11 @@ function xoaTimKiem() {
 }
 
 loadRooms();
+=======
+  document.getElementById("tongPhong").innerText = phongHops.length + " phòng họp";
+  let soPhongTrong = phongHops.filter(p => p.trangThai === "Inactive").length;
+  document.getElementById("phongTrong").innerText = soPhongTrong + " phòng đang trống";
+}
+
+loadRooms();
+>>>>>>> 6ea0951e8139a36fb1c3fe6265004efa425a3020

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 node_modules/
 dist/
 .env
@@ -8,3 +9,18 @@ dist/
 coverage/
 
 *.log
+=======
+Requirements
+
+- Git
+- Node.js >= 20
+- npm
+- MongoDB Atlas
+- Visual Studio Code
+nestjs/common
+@nestjs/core
+@nestjs/platform-express
+prisma
+@prisma/client
+mongodb
+>>>>>>> 6ea0951e8139a36fb1c3fe6265004efa425a3020
