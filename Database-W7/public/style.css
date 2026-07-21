@@ -1,0 +1,227 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: rgb(127, 127, 127);
+}
+
+.container {
+    width: 85%;
+    margin: 20px auto;
+}
+
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #eee;
+    padding: 35px;
+    border-radius: 25px;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    color: gray;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.status-card {
+    width: 320px;
+    background: rgb(86, 86, 86);
+    color: white;
+    border-radius: 18px;
+    padding: 25px;
+}
+
+.main {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+}
+
+
+
+.label {
+    color: gray;
+    letter-spacing: 3px;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.room-item {
+    background: #eeeff0b0;
+    border: 1px solid #f4f7fbb0;
+    border-radius: 18px;
+    padding: 18px;
+    margin-top: 15px;
+}
+
+.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-right: 5px;
+}
+
+.btn-dark {
+    background: rgb(86, 86, 86);
+    color: white;
+}
+
+.btn-blue {
+    background: #dbeafe;
+    color: blue;
+}
+
+.btn-red {
+    background: #fee2e2;
+    color: red;
+}
+
+.form-box {
+    background: #afb1b3;
+    padding: 20px;
+    border-radius: 18px;
+    margin-top: 15px;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 12px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+}
+
+.detail-box {
+    margin-top: 15px;
+    background: #eeeff0b0;
+    padding: 20px;
+    border-radius: 18px;
+    line-height: 1.8;
+}
+
+.hidden {
+    display: none;
+}
+
+ul {
+    margin-left: 20px;
+}
+.form-box label {
+    display: block;
+    font-weight: 600;
+    margin-top: 14px;
+}
+
+.form-box hr {
+    border: 0;
+    border-top: 1px solid #d1d5db;
+    margin: 22px 0 16px;
+}
+
+.hint {
+    color: #555;
+    font-size: 13px;
+    margin-top: 6px;
+}
+
+.time-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.form-actions {
+    margin-top: 10px;
+}
+
+.booking-item {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 12px;
+    margin-top: 10px;
+}
+
+.detail-box h4 {
+    margin-top: 18px;
+}
+
+@media (max-width: 900px) {
+    .container { width: 95%; }
+    .hero { flex-direction: column; align-items: stretch; gap: 20px; }
+    .status-card { width: 100%; }
+    .main { grid-template-columns: 1fr; }
+    .time-row { grid-template-columns: 1fr; }
+}
+
+.room-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-top: 5px;
+}
+
+.search-date {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.search-date input {
+    width: 170px;
+    margin-top: 0;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+}
+
+.search-date .btn {
+    margin-top: 0;
+    white-space: nowrap;
+}
+
+.khong-tim-thay {
+    margin-top: 20px;
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+    color: #dc2626;
+    background: #fee2e2;
+    border-radius: 14px;
+}
+
+@media (max-width: 700px) {
+    .room-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-date {
+        flex-wrap: wrap;
+    }
+
+    .search-date input {
+        width: 100%;
+    }
+}
